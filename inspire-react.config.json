@@ -1,0 +1,6 @@
+{
+  "useNpm": false,
+  "tool": "vite",
+  "stateLib": "zustand",
+  "useTailwind": true
+}
