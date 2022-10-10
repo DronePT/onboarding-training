@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
   TrainingContent,
@@ -6,49 +7,26 @@ import {
   TrainingSideBarItem,
 } from '../../components';
 
-const sideBarItems: TrainingSideBarItem[] = [
-  {
-    isDone: true,
-    text: 'Introduction',
-  },
-  {
-    isCurrent: true,
-    text: 'Getting started',
-  },
-  {
-    text: 'Components',
-  },
-  {
-    text: 'Props',
-  },
-  {
-    text: 'State',
-  },
-  {
-    text: 'Hooks',
-  },
-  {
-    text: 'Context',
-  },
-  {
-    text: 'Redux',
-  },
-  {
-    text: 'Testing',
-  },
-  {
-    text: 'Deployment',
-  },
-];
+import { TRAININGS } from '../../../../constants/trainings';
 
 export const ViewTrainingPage = (): JSX.Element => {
-  const [text, setText] = useState('');
+  const [content, setContent] = useState('');
+  const { slug } = useParams();
+
+  const training = TRAININGS.find((training) => training.slug === slug);
+
+  if (!training) return <div>Training not found</div>;
+
+  const sideBarItems: TrainingSideBarItem[] = training.steps.map((step) => ({
+    text: step.name,
+    onClick: () => setContent(step.content),
+  }));
 
   return (
-    <div className='w-full h-full mx-auto flex flex-row'>
+    <div className='flex flex-row w-full h-full mx-auto'>
       <TrainingSideBar items={sideBarItems} />
-      <section className='px-8 w-full h-full overflow-y-auto'>
-        <TrainingContent />
+      <section className='w-full h-full px-8 overflow-y-auto'>
+        <TrainingContent content={content} />
       </section>
     </div>
   );
