@@ -49,14 +49,15 @@ export const useTraining = (trainingSlug: string, stepSlug: string) => {
   };
 
   const nextStep = () => {
+    const completed = progress.currentStep >= steps.length - 1;
+
     setTrainingProgress(trainingSlug, {
       ...progress,
       currentStep: progress.currentStep + 1,
+      completed,
     });
 
-    if (progress.currentStep >= steps.length - 1) {
-      return;
-    }
+    if (completed) return;
 
     navigate(
       `/training/${trainingSlug}/${steps[progress.currentStep + 1].slug}`
@@ -69,6 +70,7 @@ export const useTraining = (trainingSlug: string, stepSlug: string) => {
     totalSteps: steps.length,
     currentStep: progress.currentStep,
     viewingStepIndex,
+    completed: progress.completed,
     nextStep,
     resetTraining,
   };

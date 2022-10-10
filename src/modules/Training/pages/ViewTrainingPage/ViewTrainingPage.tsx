@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -15,10 +16,8 @@ export const ViewTrainingPage = (): JSX.Element => {
     return <div>Training not found</div>;
   }
 
-  const { content, steps, currentStep, nextStep, resetTraining } = useTraining(
-    trainingSlug,
-    stepSlug
-  );
+  const { content, steps, currentStep, completed, nextStep, resetTraining } =
+    useTraining(trainingSlug, stepSlug);
 
   return (
     <div className='flex flex-row w-full h-full mx-auto'>
@@ -38,16 +37,27 @@ export const ViewTrainingPage = (): JSX.Element => {
       <section className='w-full h-full px-8 overflow-y-auto'>
         <TrainingContent content={content} />
       </section>
-      <div className='fixed bottom-0 left-0 w-full p-4 bg-white'>
+      <div className='fixed bottom-0 left-0 w-full p-4 bg-white shadow-xl'>
         <button
-          className='px-4 py-2 text-white bg-blue-500 rounded-lg'
+          className={clsx('px-8 py-2 text-2xl  rounded-lg font-heading', {
+            'text-white bg-blue-500': !completed,
+            'text-gray-300 bg-gray-200': completed,
+          })}
           onClick={nextStep}
+          disabled={completed}
         >
           next
         </button>
         <button
-          className='px-4 py-2 text-blue-500 bg-transparent rounded-lg'
+          className={clsx(
+            'px-8 py-2 text-2xl bg-transparent  rounded-lg font-heading',
+            {
+              'text-blue-500': completed,
+              'text-gray-300': !completed,
+            }
+          )}
           onClick={resetTraining}
+          disabled={!completed}
         >
           reset
         </button>
