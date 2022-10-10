@@ -2,12 +2,13 @@ export default [
   {
     slug: 'prerequisites',
     name: 'Prerequisites',
-    content: `# Prerequisites
-| a | b |
+    content: `## Prerequisites
+| Description | URL |
 | - | - |
 | cum caraças | deste me ca uma dor |
+| Udemy - React Stuff | https://udemy.com/ |
 
- ![Tux, the Linux mascot](http://media.slice.ca/imageserve/wp-content/uploads/sites/5/2014/12/04498df771a00d22e06d05eb4a259049/x.jpg=480x50)
+ ![Tux, the Linux mascot](http://www.catloversdiary.com/wp-content/uploads/2013/01/Scottish_Fold.jpg)
 
 what?!`,
   },
@@ -66,7 +67,7 @@ A table:
     slug: 'next-steps',
     content: `## Next steps
 
-  ![Tux, the Linux mascot](http://media.slice.ca/imageserve/wp-content/uploads/sites/5/2014/12/04498df771a00d22e06d05eb4a259049/x.jpg=480x50)
+  ![Tux, the Linux mascot](http://buzzsharer.com/wp-content/uploads/2015/05/cute-kitten-Scottish-Fold.jpg=480)
 
   * Lists
   * [ ] todo

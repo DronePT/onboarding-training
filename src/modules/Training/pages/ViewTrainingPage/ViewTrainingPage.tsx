@@ -24,6 +24,7 @@ export const ViewTrainingPage = (): JSX.Element => {
     nextStep,
     resetTraining,
     name,
+    stepName,
   } = useTraining(trainingSlug, stepSlug);
 
   const progress = Math.floor((currentStep / steps.length) * 100);
@@ -47,6 +48,7 @@ export const ViewTrainingPage = (): JSX.Element => {
       </TrainingSideBar>
       <section className='w-full h-full px-8 overflow-y-auto'>
         <div className='pb-20'>
+          <h1 className='py-4'>{stepName}</h1>
           <TrainingContent content={content} />
         </div>
       </section>

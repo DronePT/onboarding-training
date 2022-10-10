@@ -68,6 +68,7 @@ export const useTraining = (trainingSlug: string, stepSlug: string) => {
     steps,
     name,
     content: steps[viewingStepIndex].content,
+    stepName: steps[viewingStepIndex].name,
     totalSteps: steps.length,
     currentStep: progress.currentStep,
     viewingStepIndex,
