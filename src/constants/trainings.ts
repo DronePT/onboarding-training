@@ -17,7 +17,7 @@ interface Training {
 export const TRAININGS: Training[] = [
   {
     slug: 'first-steps',
-    name: 'First Steps',
+    name: 'Welcome to InspireIT - First Steps',
     description: 'Learn the basics of React',
     steps: firstSteps,
   },

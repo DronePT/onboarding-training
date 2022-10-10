@@ -21,7 +21,7 @@ export const useTraining = (trainingSlug: string, stepSlug: string) => {
       content: '',
     };
 
-  const { steps } = training;
+  const { steps, name } = training;
 
   const progress = trainingProgress[trainingSlug] || {
     currentStep: 0,
@@ -66,6 +66,7 @@ export const useTraining = (trainingSlug: string, stepSlug: string) => {
 
   return {
     steps,
+    name,
     content: steps[viewingStepIndex].content,
     totalSteps: steps.length,
     currentStep: progress.currentStep,

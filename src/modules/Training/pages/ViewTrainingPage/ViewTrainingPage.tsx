@@ -16,12 +16,23 @@ export const ViewTrainingPage = (): JSX.Element => {
     return <div>Training not found</div>;
   }
 
-  const { content, steps, currentStep, completed, nextStep, resetTraining } =
-    useTraining(trainingSlug, stepSlug);
+  const {
+    content,
+    steps,
+    currentStep,
+    completed,
+    nextStep,
+    resetTraining,
+    name,
+  } = useTraining(trainingSlug, stepSlug);
+
+  const progress = Math.floor((currentStep / steps.length) * 100);
+
+  console.log('progress', progress);
 
   return (
-    <div className='flex flex-row w-full h-full mx-auto'>
-      <TrainingSideBar>
+    <div className='flex flex-row w-full h-full'>
+      <TrainingSideBar title={name}>
         {steps.map((item, index) => (
           <TrainingSideBarItem
             key={index}
@@ -35,9 +46,18 @@ export const ViewTrainingPage = (): JSX.Element => {
         ))}
       </TrainingSideBar>
       <section className='w-full h-full px-8 overflow-y-auto'>
-        <TrainingContent content={content} />
+        <div className='pb-20'>
+          <TrainingContent content={content} />
+        </div>
       </section>
-      <div className='fixed bottom-0 left-0 w-full p-4 bg-white shadow-xl'>
+      <div className='fixed bottom-0 left-0 flex justify-end w-full p-4 bg-white shadow-xl'>
+        <div className='absolute top-0 left-0 right-0 h-[2px] bg-gray-300'>
+          <div
+            className='h-[2px] transition-all duration-500 bg-green-400'
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
         <button
           className={clsx('px-8 py-2 text-2xl  rounded-lg font-heading', {
             'text-white bg-blue-500': !completed,
