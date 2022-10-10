@@ -7,7 +7,7 @@ export const routerConfiguration: RouteEntry[] = [
     component: HomePage,
   },
   {
-    path: '/training/:slug',
+    path: '/training/:slug/:step',
     exact: true,
     component: ViewTrainingPage,
   },

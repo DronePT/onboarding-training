@@ -2,6 +2,7 @@ import advanced from './advanced';
 import firstSteps from './first-steps';
 
 export interface Step {
+  slug: string;
   name: string;
   content: string;
 }

@@ -1,6 +1,7 @@
 export default [
   {
     name: 'Prerequisites',
+    slug: 'prerequisites',
     content: `# Prerequisites
 | a | b |
 | - | - |
@@ -12,6 +13,7 @@ what?!`,
   },
   {
     name: 'Advanced #1',
+    slug: 'advanced-1',
     content: `## Installation
 
 To install the \`React library\`, run the following command in your terminal:

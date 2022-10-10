@@ -1,5 +1,6 @@
 export default [
   {
+    slug: 'prerequisites',
     name: 'Prerequisites',
     content: `# Prerequisites
 | a | b |
@@ -11,6 +12,7 @@ export default [
 what?!`,
   },
   {
+    slug: 'getting-started',
     name: 'Getting Started',
     content: `## Installation
 
@@ -57,5 +59,21 @@ A table:
 * Lists
 * [ ] todo
 * [x] done`,
+  },
+
+  {
+    name: 'Next Steps',
+    slug: 'next-steps',
+    content: `## Next steps
+
+  ![Tux, the Linux mascot](http://media.slice.ca/imageserve/wp-content/uploads/sites/5/2014/12/04498df771a00d22e06d05eb4a259049/x.jpg=480x50)
+
+  * Lists
+  * [ ] todo
+  * [x] done
+  * [ ] todo
+  * [x] done
+  * [ ] todo
+`,
   },
 ];

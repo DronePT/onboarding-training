@@ -1,29 +1,27 @@
 import clsx from 'clsx';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 interface TrainingSideBarItemProps {
   isDone?: boolean;
   isCurrent?: boolean;
-  onClick?: () => void;
   children?: React.ReactNode;
+  trainingSlug: string;
+  stepSlug: string;
 }
 
 export const TrainingSideBarItem = ({
   isDone = false,
   isCurrent = false,
-  onClick,
+  stepSlug,
+  trainingSlug,
   children,
 }: TrainingSideBarItemProps): JSX.Element => {
-  const handleClick = () => {
-    onClick?.();
-  };
-
   return (
-    <li className='border-b border-gray-100 last:border-b-0'>
-      <a
-        href='#'
-        className='px-4 py-2 flex justify-between items-center'
-        onClick={handleClick}
+    <li className='border-b border-gray-100 select-none last:border-b-0'>
+      <Link
+        className={clsx('flex items-center justify-between px-4 py-2')}
+        to={`/training/${trainingSlug}/${stepSlug}`}
       >
         <span
           className={clsx('mr-8', {
@@ -42,7 +40,7 @@ export const TrainingSideBarItem = ({
           })}
           size={24}
         />
-      </a>
+      </Link>
     </li>
   );
 };
