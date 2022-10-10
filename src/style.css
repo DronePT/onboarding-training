@@ -1,12 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=Nunito:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Karma:wght@300;400;700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* apply to border-box */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Karma', serif;
     font-size: 16px;
 
     @apply text-gray-900 bg-blue-50;
@@ -28,12 +36,12 @@
   }
 
   .font-heading {
-    font-family: 'Chakra Petch', sans-serif;
-    font-weight: 600;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
   }
 
   .heading {
-    @apply font-normal font-heading;
+    @apply font-heading;
   }
 
   h1,

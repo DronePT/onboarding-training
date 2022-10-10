@@ -1,0 +1,40 @@
+.markdown {
+  h2 {
+    @apply my-4
+  }
+
+  a {
+    @apply text-blue-500;
+  }
+
+  pre div {
+    @apply my-4 rounded-lg p-4;
+  }
+
+  p {
+    @apply my-2;
+
+    code {
+        @apply bg-blue-100 inline-block rounded-lg px-2 py-1;
+        font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    }
+  }
+
+  img {
+    @apply rounded-lg
+  }
+
+  table {
+    @apply  w-full my-4;
+
+    thead {
+      th {
+        @apply bg-blue-100 first:rounded-tl-lg last:rounded-tr-lg;
+      }
+    }
+
+    tbody tr td {
+      @apply p-2 bg-white last:rounded-br-lg first:rounded-bl-lg;
+    }
+  }
+}
