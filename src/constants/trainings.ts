@@ -7,7 +7,7 @@ export interface Step {
   content: string;
 }
 
-interface Training {
+export interface Training {
   slug: string;
   name: string;
   description: string;

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 interface TrainingSideBarItemProps {
   isDone?: boolean;
   isCurrent?: boolean;
+  isDisabled?: boolean;
   children?: React.ReactNode;
   trainingSlug: string;
   stepSlug: string;
