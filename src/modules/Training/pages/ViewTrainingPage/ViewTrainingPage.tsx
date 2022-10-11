@@ -5,7 +5,7 @@ import { Loading } from '../../../../components';
 import {
   TrainingContent,
   TrainingSideBar,
-  TrainingSideBarItem,
+  TrainingSideBarItem
 } from '../../components';
 
 import { useTraining } from '../../hooks';
@@ -47,46 +47,50 @@ export const ViewTrainingPage = (): JSX.Element => {
           </TrainingSideBarItem>
         ))}
       </TrainingSideBar>
-      <section className='w-full h-full px-8 overflow-y-auto'>
+      <section className='w-full h-full overflow-y-auto relative'>
         {currentStep && (
           <div className='pb-20'>
-            <h1 className='py-4'>{currentStep?.name}</h1>
-            <TrainingContent content={currentStep.content} />
+            <div className='h-[80px] px-8 mb-8 flex items-start flex-col justify-center bg-blue-100 border-b border-b-blue-300'>
+              <h1>{currentStep?.name}</h1>
+            </div>
+            <div className='px-8'>
+              <TrainingContent content={currentStep.content} />
+            </div>
           </div>
         )}
-      </section>
-      <div className='fixed bottom-0 left-0 flex justify-end w-full p-4 bg-white shadow-xl'>
-        <div className='absolute top-0 left-0 right-0 h-[2px] bg-gray-300'>
-          <div
-            className='h-[2px] transition-all duration-500 bg-green-400'
-            style={{ width: `${progressPercentage}%` }}
-          ></div>
-        </div>
+        <div className='fixed left-0 bottom-0 right-0 z-10 flex justify-end w-full p-4 bg-white shadow-xl'>
+          <div className='absolute top-0 left-0 right-0 h-[2px] bg-gray-300'>
+            <div
+              className='h-[2px] transition-all duration-500 bg-green-400'
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
+          </div>
 
-        <button
-          className={clsx('px-8 py-2 text-2xl  rounded-lg font-heading', {
-            'text-white bg-blue-500': !progress.completed,
-            'text-gray-300 bg-gray-200': progress.completed,
-          })}
-          onClick={nextStep}
-          disabled={progress.completed}
-        >
-          next
-        </button>
-        <button
-          className={clsx(
-            'px-8 py-2 text-2xl bg-transparent  rounded-lg font-heading',
-            {
-              'text-blue-500': progress.completed,
-              'text-gray-300': !progress.completed,
-            }
-          )}
-          onClick={resetTraining}
-          disabled={!progress.completed}
-        >
-          reset
-        </button>
-      </div>
+          <button
+            className={clsx('px-8 py-2 text-2xl  rounded-lg font-heading', {
+              'text-white bg-blue-500': !progress.completed,
+              'text-gray-300 bg-gray-200': progress.completed,
+            })}
+            onClick={nextStep}
+            disabled={progress.completed}
+          >
+            next
+          </button>
+          <button
+            className={clsx(
+              'px-8 py-2 text-2xl bg-transparent  rounded-lg font-heading',
+              {
+                'text-blue-500': progress.completed,
+                'text-gray-300': !progress.completed,
+              }
+            )}
+            onClick={resetTraining}
+            disabled={!progress.completed}
+          >
+            reset
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

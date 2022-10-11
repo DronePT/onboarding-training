@@ -26,14 +26,18 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
             const [, link, , width, height] = exec;
 
             return (
-              <img
-                {...props}
-                src={link}
-                alt={node.properties?.alt as string}
-                className='mx-auto'
-                width={width || undefined}
-                height={height || undefined}
-              />
+              <div className='flex items-center justify-center'>
+                <span className='shadow-lg border-[10px] border-white inline-block rounded-lg mx-auto'>
+                  <img
+                    {...props}
+                    src={link}
+                    alt={node.properties?.alt as string}
+                    className='rounded-lg'
+                    width={width || undefined}
+                    height={height || undefined}
+                  />
+                </span>
+              </div>
             );
           },
           code({ node, inline, className, children, ...props }) {

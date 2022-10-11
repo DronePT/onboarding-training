@@ -1,10 +1,18 @@
 .markdown {
-  h2 {
-    @apply my-4
+  hr {
+    @apply bg-blue-200 h-0.5 border-0 my-8;
+  }
+
+  h1, h2 {
+    @apply mt-12 mb-4 first:mt-0;
+  }
+
+  h3 {
+    @apply mt-12 first:mt-0;
   }
 
   a {
-    @apply text-blue-500;
+    @apply text-blue-800;
   }
 
   pre div {
@@ -12,7 +20,7 @@
   }
 
   p {
-    @apply my-2;
+    @apply my-4 leading-7;
 
     code {
         @apply bg-blue-100 inline-block rounded-lg px-2 py-1;
@@ -20,21 +28,23 @@
     }
   }
 
-  img {
-    @apply rounded-lg
-  }
-
   table {
-    @apply  w-full my-4;
+    @apply  w-full my-4 shadow-lg;
 
     thead {
       th {
-        @apply bg-blue-100 first:rounded-tl-lg last:rounded-tr-lg py-2 px-4 text-left;
+        @apply bg-blue-100 first:rounded-tl-lg last:rounded-tr-lg py-2 px-4 text-left ;
       }
     }
 
-    tbody tr td {
-      @apply py-2 px-4 bg-white last:rounded-br-lg first:rounded-bl-lg;
-    }
+    tbody tr {
+      td {
+        @apply py-2 px-4 bg-white border-b border-b-gray-100;
+      }
+
+      &:last-child td {
+        @apply last:rounded-br-lg first:rounded-bl-lg border-b-0 ;
+      }
+  }
   }
 }
