@@ -18,11 +18,12 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ node, ...props }) => {
-            const [link, dimensions] = (
-              (node?.properties?.src || '') as string
-            ).split('=');
+            const re = /(.*)(=([0-9]*)x*([0-9]*))/i;
+            const srcLink = String(node?.properties?.src || '');
 
-            const [width, height] = dimensions?.split('x') || [];
+            const exec = re.exec(srcLink) || [, srcLink, , , ,];
+
+            const [, link, , width, height] = exec;
 
             return (
               <img
