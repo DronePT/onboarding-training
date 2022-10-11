@@ -18,7 +18,7 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ node, ...props }) => {
-            const re = /(.*)(=([0-9]*)x*([0-9]*))/i;
+            const re = /(.*)(=([0-9]*)x([0-9]*))/i;
             const srcLink = String(node?.properties?.src || '');
 
             const exec = re.exec(srcLink) || [, srcLink, , , ,];
