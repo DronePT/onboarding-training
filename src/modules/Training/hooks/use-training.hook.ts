@@ -23,7 +23,7 @@ interface UseTrainingReturn {
 
 export const useTraining = (
   trainingSlug: string,
-  stepSlug: string
+  stepSlug?: string
 ): UseTrainingReturn => {
   const [trainingProgress, setTrainingProgress] = useStore((state) => [
     state.trainingProgress,
@@ -50,9 +50,12 @@ export const useTraining = (
   const progress =
     trainingProgress[trainingSlug] || TrainingProgressValueObject.default();
 
+  const currentStepSlug =
+    stepSlug || training?.getStepSlug(progress.currentStep) || '';
+
   const viewingStepIndex = useMemo(
-    () => training?.getStepIndex(stepSlug) ?? -1,
-    [training, stepSlug]
+    () => training?.getStepIndex(currentStepSlug) ?? -1,
+    [training, currentStepSlug]
   );
 
   useEffect(() => {
