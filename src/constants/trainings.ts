@@ -1,6 +1,3 @@
-import advanced from './advanced';
-import firstSteps from './first-steps';
-
 export interface Step {
   slug: string;
   name: string;
@@ -13,18 +10,3 @@ export interface Training {
   description: string;
   steps: Step[];
 }
-
-export const TRAININGS: Training[] = [
-  {
-    slug: 'first-steps',
-    name: 'Welcome to InspireIT - First Steps',
-    description: 'Learn the basics of React',
-    steps: firstSteps,
-  },
-  {
-    slug: 'advanced',
-    name: 'Advanced',
-    description: 'Learn advanced React concepts',
-    steps: advanced,
-  },
-];
