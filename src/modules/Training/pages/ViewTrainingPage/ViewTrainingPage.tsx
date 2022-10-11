@@ -39,6 +39,7 @@ export const ViewTrainingPage = (): JSX.Element => {
             key={index}
             isDone={index < currentStep}
             isCurrent={index === currentStep}
+            isDisabled={index > currentStep}
             trainingSlug={trainingSlug}
             stepSlug={item.slug}
           >

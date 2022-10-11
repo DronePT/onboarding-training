@@ -13,6 +13,7 @@ interface TrainingSideBarItemProps {
 export const TrainingSideBarItem = ({
   isDone = false,
   isCurrent = false,
+  isDisabled = false,
   stepSlug,
   trainingSlug,
   children,
@@ -22,6 +23,11 @@ export const TrainingSideBarItem = ({
       <Link
         className={clsx('flex items-center justify-between px-4 py-2')}
         to={`/training/${trainingSlug}/${stepSlug}`}
+        onClick={(e) => {
+          if (isDisabled) {
+            e.preventDefault();
+          }
+        }}
       >
         <span
           className={clsx('mr-8', {
