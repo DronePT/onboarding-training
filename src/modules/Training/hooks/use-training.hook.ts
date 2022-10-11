@@ -6,13 +6,9 @@ import { useStore } from '../../../store';
 import {
   TrainingEntity,
   TrainingProgressValueObject,
-  TrainingsRepoTrainingRepo,
   TrainingStepEntity,
 } from '../domain';
-
-const getTraining = (trainingSlug: string) => {
-  return TrainingsRepoTrainingRepo.instance.getTrainingBySlug(trainingSlug);
-};
+import { TrainingService } from '../services';
 
 interface UseTrainingReturn {
   training?: TrainingEntity;
@@ -38,7 +34,7 @@ export const useTraining = (
 
   const { data: training, isLoading } = useQuery(
     ['training', trainingSlug],
-    () => getTraining(trainingSlug),
+    () => TrainingService.getTraining(trainingSlug),
     {
       onSuccess: (training) => {
         if (!trainingProgress[training.slug]) {
