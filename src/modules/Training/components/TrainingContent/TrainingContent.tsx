@@ -26,7 +26,7 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
             const [, link, , width, height] = exec;
 
             return (
-              <div className='flex items-center justify-center'>
+              <span className='flex items-center justify-center'>
                 <span className='shadow-lg border-[10px] border-white inline-block rounded-lg mx-auto'>
                   <img
                     {...props}
@@ -37,7 +37,7 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
                     height={height || undefined}
                   />
                 </span>
-              </div>
+              </span>
             );
           },
           code({ node, inline, className, children, ...props }) {

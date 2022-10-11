@@ -5,7 +5,7 @@ import { Loading } from '../../../../components';
 import {
   TrainingContent,
   TrainingSideBar,
-  TrainingSideBarItem
+  TrainingSideBarItem,
 } from '../../components';
 
 import { useTraining } from '../../hooks';
@@ -49,11 +49,11 @@ export const ViewTrainingPage = (): JSX.Element => {
       </TrainingSideBar>
       <section className='w-full h-full overflow-y-auto relative'>
         {currentStep && (
-          <div className='pb-20'>
+          <div className='w-full pb-20'>
             <div className='h-[80px] px-8 mb-8 flex items-start flex-col justify-center bg-blue-100 border-b border-b-blue-300'>
               <h1>{currentStep?.name}</h1>
             </div>
-            <div className='px-8'>
+            <div className='px-8 overflow-x-auto'>
               <TrainingContent content={currentStep.content} />
             </div>
           </div>
