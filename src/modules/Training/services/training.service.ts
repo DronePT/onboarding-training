@@ -1,8 +1,8 @@
-import { AppWriteTrainingsRepoTrainingRepo } from '../repositories/appwrite-training-repo';
+import { FirebaseTrainingsRepoTrainingRepo } from '../repositories';
 
 export class TrainingService {
   static getTraining(trainingSlug: string) {
-    return AppWriteTrainingsRepoTrainingRepo.instance.getTrainingBySlug(
+    return FirebaseTrainingsRepoTrainingRepo.instance.getTrainingBySlug(
       trainingSlug
     );
   }

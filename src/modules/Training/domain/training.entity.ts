@@ -27,24 +27,30 @@ export class TrainingEntity extends Entity<string, TrainingState> {
     return this.getState().slug;
   }
 
+  private _getSlug(stepIndex: number): string {
+    if (!this.steps.length) return '';
+
+    return this.steps[stepIndex].slug;
+  }
+
   getStepIndex(stepSlug: string): number {
     return this.steps.findIndex((s) => s.slug === stepSlug);
   }
 
   getStepSlug(stepIndex: number): string {
-    return this.steps[stepIndex].slug;
+    return this._getSlug(stepIndex);
   }
 
   getFirstStepSlug(): string {
-    return this.steps[0].slug;
+    return this._getSlug(0);
   }
 
   getLastStepSlug(): string {
-    return this.steps[this.steps.length - 1].slug;
+    return this._getSlug(this.steps.length - 1);
   }
 
   getNextStepSlug(stepIndex: number): string {
-    return this.steps[stepIndex + 1].slug;
+    return this._getSlug(stepIndex + 1);
   }
 
   getTotalSteps(): number {
