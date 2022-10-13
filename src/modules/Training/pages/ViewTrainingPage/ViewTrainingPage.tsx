@@ -58,7 +58,7 @@ export const ViewTrainingPage = (): JSX.Element => {
             </div>
           </div>
         )}
-        <div className='fixed left-0 bottom-0 right-0 z-10 flex justify-end w-full p-4 bg-white shadow-xl'>
+        <div className='fixed left-0 bottom-0 right-0 z-20 flex justify-end w-full p-4 bg-white shadow-xl'>
           <div className='absolute top-0 left-0 right-0 h-[2px] bg-gray-300'>
             <div
               className='h-[2px] transition-all duration-500 bg-green-400'

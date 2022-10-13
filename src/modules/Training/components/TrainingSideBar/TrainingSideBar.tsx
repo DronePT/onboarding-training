@@ -38,7 +38,14 @@ export const TrainingSideBar = ({
 
   return (
     <>
-      <div className='fixed z-20 right-8 top-0 md:hidden h-[80px] flex items-center justify-center'>
+      {isOpen && !isDesktop && (
+        <div
+          role='button'
+          className='fixed top-0 right-0 bottom-0 left-0 z-20 bg-black bg-opacity-20'
+          onClick={() => setIsOpen(false)}
+        ></div>
+      )}
+      <div className='fixed z-30 right-8 top-0 md:hidden h-[80px] flex items-center justify-center'>
         <button onClick={() => setIsOpen((o) => !o)}>
           {isOpen ? (
             <AiOutlineCloseCircle size={32} />
@@ -49,7 +56,7 @@ export const TrainingSideBar = ({
       </div>
       <div
         className={clsx(
-          'bg-white flex-grow max-w-xs min-w-[300px] shadow-lg z-10',
+          'bg-white flex-grow max-w-xs min-w-[300px] shadow-lg z-20',
           'absolute h-full',
           'md:relative md:block',
           { hidden: !isOpen && !isDesktop }
