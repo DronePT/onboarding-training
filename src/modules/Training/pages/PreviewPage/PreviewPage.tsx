@@ -24,10 +24,10 @@ export const PreviewPage = (): JSX.Element => {
   };
 
   return (
-    <div>
-      <div className=''>
+    <div className='pt-96 relative'>
+      <div className='fixed h-96 left-0 right-0 top-0 shadow-lg p-0'>
         <textarea
-          className='w-full h-96 bg-blue-100 border-b border-b-gray-300 rounded-md p-4'
+          className='w-full h-96 bg-blue-100 border-b border-b-gray-300 p-4 m-0'
           value={content}
           onChange={handleContentChange}
         />

@@ -26,7 +26,7 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
             const [, link, , width, height] = exec;
 
             return (
-              <span className='flex items-center justify-center'>
+              <span className='flex items-center justify-center my-8'>
                 <span className='shadow-lg border-[10px] border-white inline-block rounded-lg mx-auto'>
                   <img
                     {...props}
