@@ -15,19 +15,13 @@ import {
   TrainingStepEntity,
 } from '../domain';
 
-function mapSeries<T, U>(arr: T[], fn: (item: T) => Promise<U>): Promise<U[]> {
-  return arr.reduce(
-    (promise, item) =>
-      promise.then((result) => fn(item).then((item) => [...result, item])),
-    Promise.resolve([] as U[])
-  );
-}
+import { mapSeries } from '../../../utils';
 
 export class FirebaseTrainingsRepoTrainingRepo extends TrainingsRepoTrainingRepo {
   private static _instance: FirebaseTrainingsRepoTrainingRepo;
 
-  private _app!: FirebaseApp;
-  private _db!: Firestore;
+  private readonly _app!: FirebaseApp;
+  private readonly _db!: Firestore;
 
   constructor() {
     super();
@@ -60,17 +54,16 @@ export class FirebaseTrainingsRepoTrainingRepo extends TrainingsRepoTrainingRepo
     }
 
     const training = trainingsSnapshot.docs[0].data();
+    const steps = (await mapSeries(training.steps, this._getStep)).sort(
+      (a, b) => a.position - b.position
+    );
 
-    const steps = await mapSeries(training.steps, this._getStep);
-
-    const trainingEntity = TrainingEntity.fromStore({
+    return TrainingEntity.fromStore({
       name: training.name,
       description: training.description,
       slug: training.slug,
       steps,
     });
-
-    return trainingEntity;
   }
 
   private async _getStep(stepRef: any): Promise<Step> {

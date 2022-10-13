@@ -36,8 +36,6 @@ export const TrainingSideBar = ({
   const isDesktop = useMediaQuery(768);
   const [isOpen, setIsOpen] = React.useState(true);
 
-  console.warn(isDesktop);
-
   return (
     <>
       <div className='fixed z-20 right-8 top-0 md:hidden h-[80px] flex items-center justify-center'>
