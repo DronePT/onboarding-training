@@ -33,7 +33,7 @@ export const TrainingSideBarItem = ({
         <span
           className={clsx('mr-8', {
             'text-gray-300': !isCurrent,
-            'line-through': isDone,
+            // 'line-through': isDone,
             'text-bold': isCurrent,
           })}
         >

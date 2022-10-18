@@ -18,6 +18,7 @@ export const ViewTrainingPage = (): JSX.Element => {
     isLoading,
     progress,
     currentStep,
+    currentStepIndex,
     nextStep,
     resetTraining,
   } = useTraining(trainingSlug!, stepSlug!);
@@ -25,11 +26,11 @@ export const ViewTrainingPage = (): JSX.Element => {
   if (isLoading) return <Loading />;
   if (!training) return <div>Training not found</div>;
 
-  const currentStepIndex = progress.currentStep;
+  const currentProgressStep = progress.currentStep;
 
   const progressPercentage = !training
     ? 0
-    : Math.floor((currentStepIndex / training.getTotalSteps()) * 100);
+    : Math.floor((currentProgressStep / training.getTotalSteps()) * 100);
 
   return (
     <div className='flex flex-row w-full h-full'>
@@ -37,9 +38,9 @@ export const ViewTrainingPage = (): JSX.Element => {
         {training.steps.map((item, index) => (
           <TrainingSideBarItem
             key={index}
-            isDone={index < currentStepIndex}
+            isDone={index < currentProgressStep}
             isCurrent={index === currentStepIndex}
-            isDisabled={index > currentStepIndex}
+            isDisabled={index > currentProgressStep}
             trainingSlug={training.slug}
             stepSlug={item.slug}
           >

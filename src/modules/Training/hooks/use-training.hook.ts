@@ -14,6 +14,7 @@ interface UseTrainingReturn {
   training?: TrainingEntity;
   isLoading: boolean;
   currentStep?: TrainingStepEntity;
+  currentStepIndex: number;
   progress: TrainingProgressValueObject;
   nextStep?: () => void;
   previousStep?: () => void;
@@ -110,6 +111,7 @@ export const useTraining = (
     training,
     progress,
     currentStep: training?.getStepByIndex(viewingStepIndex),
+    currentStepIndex: viewingStepIndex,
     nextStep,
     resetTraining,
   };
