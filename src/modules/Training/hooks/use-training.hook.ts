@@ -60,6 +60,15 @@ export const useTraining = (
   );
 
   useEffect(() => {
+    if (!training) return;
+
+    const step = training.getStepByIndex(viewingStepIndex);
+    if (step) {
+      document.title = `${step.name} - ${training.name}`;
+    }
+  }, [viewingStepIndex, training, currentStepSlug]);
+
+  useEffect(() => {
     if (!viewingStepIndex) return;
 
     if (viewingStepIndex > progress.currentStep) {
