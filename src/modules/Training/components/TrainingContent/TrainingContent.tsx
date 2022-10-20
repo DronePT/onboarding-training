@@ -13,11 +13,25 @@ interface TrainingContentProps {
   content: string;
 }
 
+const LOCAL_STORAGE_THEME_KEY = 'onboarding-theme';
+
+const getThemeFromLocalStorage = () => {
+  const theme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
+
+  return theme || 'materialDark';
+};
+
 export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
-  const [themeName, setThemeName] = useState('materialDark');
+  const [themeName, setThemeName] = useState(getThemeFromLocalStorage());
 
   const themesList = Object.keys(themes);
   const selectedTheme = (themes as any)[themeName];
+
+  const handleSelectTheme = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const theme = e.target.value;
+    setThemeName(theme);
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+  };
 
   return (
     <div className='h-full pb-4 TrainingContent markdown'>
@@ -28,7 +42,7 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
         <select
           className='border border-blue-500 rounded-lg py-1 px-2'
           value={themeName}
-          onChange={(e) => setThemeName(e.target.value)}
+          onChange={handleSelectTheme}
         >
           {themesList.map((theme) => (
             <option key={theme} value={theme}>
