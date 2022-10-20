@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loading } from '../../../../components';
 
@@ -12,6 +13,7 @@ import { useTraining } from '../../hooks';
 
 export const ViewTrainingPage = (): JSX.Element => {
   const { slug: trainingSlug, step: stepSlug } = useParams();
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const {
     training,
@@ -32,6 +34,10 @@ export const ViewTrainingPage = (): JSX.Element => {
     ? 0
     : Math.floor((currentProgressStep / training.getTotalSteps()) * 100);
 
+  const handleContentRender = () => {
+    contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className='flex flex-row w-full h-full'>
       <TrainingSideBar title={training.name}>
@@ -48,14 +54,20 @@ export const ViewTrainingPage = (): JSX.Element => {
           </TrainingSideBarItem>
         ))}
       </TrainingSideBar>
-      <section className='w-full h-full overflow-y-auto relative'>
+      <section
+        ref={contentRef}
+        className='w-full h-full overflow-y-auto relative'
+      >
         {currentStep && (
           <div className='w-full pb-20'>
             <div className='h-[80px] px-8 mb-8 flex items-start flex-col justify-center bg-blue-100 border-b border-b-blue-300'>
               <h1>{currentStep?.name}</h1>
             </div>
             <div className='px-8 overflow-x-auto'>
-              <TrainingContent content={currentStep.content} />
+              <TrainingContent
+                content={currentStep.content}
+                onRender={handleContentRender}
+              />
             </div>
           </div>
         )}

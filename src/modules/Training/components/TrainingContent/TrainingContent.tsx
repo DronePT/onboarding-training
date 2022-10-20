@@ -6,11 +6,12 @@ import './TrainingContent.scss';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import {  as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 // import { coldarkDark as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as themes from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface TrainingContentProps {
   content: string;
+  onRender?: () => void;
 }
 
 const LOCAL_STORAGE_THEME_KEY = 'onboarding-theme';
@@ -21,7 +22,10 @@ const getThemeFromLocalStorage = () => {
   return theme || 'materialDark';
 };
 
-export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
+export const TrainingContent = ({
+  content,
+  onRender,
+}: TrainingContentProps): JSX.Element => {
   const [themeName, setThemeName] = useState(getThemeFromLocalStorage());
 
   const themesList = Object.keys(themes);
@@ -32,6 +36,10 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
     setThemeName(theme);
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
   };
+
+  useEffect(() => {
+    onRender?.();
+  }, [content]);
 
   return (
     <div className='h-full pb-4 TrainingContent markdown'>
@@ -52,7 +60,7 @@ export const TrainingContent = (props: TrainingContentProps): JSX.Element => {
         </select>
       </div>
       <ReactMarkdown
-        children={props.content}
+        children={content}
         remarkPlugins={[remarkGfm]}
         components={{
           img: ({ node, ...props }) => {
