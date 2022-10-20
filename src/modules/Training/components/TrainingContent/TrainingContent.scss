@@ -57,4 +57,12 @@
       }
     }
   }
+
+  section {
+    @apply bg-blue-200 rounded-lg p-4 my-4 shadow-lg border-2 border-blue-500 mb-8;
+
+    h1 {
+      @apply first:text-5xl first:bg-blue-500 first:text-white first:rounded-t-lg  first:-mt-4 first:-ml-4 first:-mr-4 first:p-4;
+    }
+  }
 }

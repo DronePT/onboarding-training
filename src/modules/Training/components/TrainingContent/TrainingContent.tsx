@@ -1,12 +1,11 @@
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
 import './TrainingContent.scss';
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import {  as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
-// import { coldarkDark as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useEffect, useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import * as themes from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface TrainingContentProps {
@@ -62,6 +61,7 @@ export const TrainingContent = ({
       <ReactMarkdown
         children={content}
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           img: ({ node, ...props }) => {
             const srcLink = String(node?.properties?.src || '');
